@@ -1,0 +1,14 @@
+<!--Это шаблон отображения ОДНОГО фильма из БД (GET-запрос) на основе базового - base.html-->
+
+{% extends 'movie_app/base.html' %}
+
+
+{% block title %} Все фильмы {% endblock %}
+
+
+{% block content %}
+    <h2> Информация о фильме {{ movie.name }} </h2>
+    <h3> Рейтинг - {{movie.rating}} </h3>
+    <h3> Год выхода - {{movie.year}} </h3>
+    <h3> Бюджет - {{movie.budget}} </h3>
+{% endblock %}

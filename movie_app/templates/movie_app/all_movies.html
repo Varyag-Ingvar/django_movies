@@ -1,0 +1,28 @@
+<!--Это шаблон отображения всехт фильмов из БД на основе базового - base.html-->
+
+{% extends 'movie_app/base.html' %}
+
+
+{% block title %} Все фильмы {% endblock %}
+
+
+{% block content %}
+    <h2>Список всех фильмов</h2>
+    <ul>
+        {% for movie in movies %}
+<!--            Оборачиваем {{ movie.name }} в тег <a> с помощью Ctrl+Alt+J, делая его ссылкой и прописываем маршрут-->
+            <li>
+                <a href="{{ movie.get_url }}">{{ movie.name }}</a>,
+<!--                можем отображать любые поля из модели Movie-->
+                рейтинг {{movie.rating}},
+                год выхода {{movie.year}}
+            </li>
+        {% endfor %}
+    </ul>
+<!--    выводим на странице результаты аггрегации, прописанные во views-->
+    <h3>Средний бюджет - {{ agg.budget__avg }} $</h3>
+    <h3>Минимальный рейтинг - {{ agg.rating__min }} %</h3>
+    <h3>Максимальный рейтинг - {{ agg.rating__max }} %</h3>
+    <h3>Всего фильмов - {{ total }} </h3>
+
+{% endblock %}
